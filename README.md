@@ -1,4 +1,4 @@
-# ZGB Template Repository
+# ZGB Devcontainer Template Repository
 
 This is a GitHub repository template for [ZGB](https://github.com/Zal0/ZGB).
 
