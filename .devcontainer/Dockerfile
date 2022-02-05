@@ -21,9 +21,9 @@ RUN dpkg --add-architecture i386 && \
     | cut -d'"' -f4 \
     | wget -qi - -O gbt-player.tar.gz && tar xf gbt-player.tar.gz -C /opt/gbt-player --strip-components=1 && rm gbt-player.tar.gz && \
     # gbtd
-    wget http://www.devrs.com/gb/hmgd/gbtd22.zip && unzip gbtd22.zip -d /opt/gbtd && rm gbtd22.zip && \
+    wget http://www.devrs.com/gb/hmgd/gbtd22.zip && unzip gbtd22.zip -d /opt/gbtd && echo '[General]\nGBRPath=Z:\\workspace\\res\\\n' >> /opt/gbtd/gbtd.ini && chmod 0666 /opt/gbtd/gbtd.ini && rm gbtd22.zip && \
     # gbmb
-    wget http://www.devrs.com/gb/hmgd/gbmb18.zip && unzip gbmb18.zip -d /opt/gbmb && rm gbmb18.zip && \
+    wget http://www.devrs.com/gb/hmgd/gbmb18.zip && unzip gbmb18.zip -d /opt/gbmb && echo '[General]\nGBMPath=Z:\\workspace\\res\\\n' >> /opt/gbmb/gbmb.ini && chmod 0666 /opt/gbmb/gbmb.ini && rm gbmb18.zip && \
     # BGB
     wget http://bgb.bircd.org/bgb.zip && unzip bgb.zip -d /opt/bgb && rm bgb.zip && \
     # Emulicious
