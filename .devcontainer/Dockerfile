@@ -10,7 +10,7 @@ RUN dpkg --add-architecture i386 && \
     echo 'deb https://dl.winehq.org/wine-builds/debian/ bullseye main' | tee /etc/apt/sources.list.d/winehq.list && \
     apt-get update && apt-get -y install --install-recommends winehq-stable zenity && apt-get -y full-upgrade && \
     mkdir -p /opt/wine-stable/share/wine/mono && curl -o /opt/wine-stable/share/wine/mono/wine-mono-${WINE_MONO_VERSION}-x86.msi https://dl.winehq.org/wine/wine-mono/${WINE_MONO_VERSION}/wine-mono-${WINE_MONO_VERSION}-x86.msi && \
-    mkdir -p /opt/pngb /opt/gbt-player/mod2gbt/bin /opt/hUGETracker/uge2source /opt/ZGB && \
+    mkdir -p /opt/pngb /opt/gbt-player/gb/legacy_gbdk/mod2gbt/bin /opt/hUGETracker/uge2source /opt/ZGB && \
     # GBDK
     wget --no-check-certificate https://github.com/gbdk-2020/gbdk-2020/releases/latest/download/gbdk-linux64.tar.gz && tar xf gbdk-linux64.tar.gz -C /opt && rm gbdk-linux64.tar.gz && \
     # pngb
@@ -35,7 +35,7 @@ RUN dpkg --add-architecture i386 && \
     | grep tarball_url \
     | cut -d'"' -f4 \
     | wget -qi - -O ZGB.tar.gz --no-check-certificate && tar xf ZGB.tar.gz -C /opt/ZGB --strip-components=1 && rm ZGB.tar.gz && \
-    cd /opt/pngb && make && rm -rf ./build && cd /opt/gbt-player/mod2gbt && make && mv mod2gbt ./bin && \
+    cd /opt/pngb && make && rm -rf ./build && cd /opt/gbt-player/gb/legacy_gbdk/mod2gbt && make && mv mod2gbt ./bin && \
     cd /opt/ZGB/tools/gbm2c && g++ -o gbm2c gbm2c.cpp && cd /opt/ZGB/tools/gbr2c && g++ -o gbr2c gbr2c.cpp && cd /opt/ZGB/tools/gbr2png && g++ gbr2png.cpp lodepng/lodepng.cpp -o gbr2png && \
     apt-get autoremove -y && apt-get clean -y
 ENV DBUS_SESSION_BUS_ADDRESS="autolaunch:" \
